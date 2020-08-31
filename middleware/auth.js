@@ -3,7 +3,7 @@ const config = require('config');
 
 // middleware is essentially a function that has access the res and req objects
 module.exports = function (req, res, next) {
-  // To Access a protected route, must send token if the header of a request
+  // To Access a protected route, must send token in the header of a get or post request
   // Get token from the header
   const token = req.header('x-auth-token');
 
