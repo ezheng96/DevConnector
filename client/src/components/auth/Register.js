@@ -1,7 +1,13 @@
 import React, { Fragment, useState } from 'react';
+//connecting this component to redux
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+// whenever you import an action you want to use, have to pass it to connect
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 
-export const Register = () => {
+
+export const Register = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,7 +23,8 @@ export const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('Passwords do not match');
+      //why are we using props to call setAlert, where is setAlert being passed in as a prop
+      setAlert('Passwords do not match', 'danger');
     } else {
       console.log('SUCCESS');
     }
@@ -85,4 +92,10 @@ export const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+};
+
+//whenever we use connect, we must export it with the component like so:
+//connect takes in (state you want to map, object with any actions you want to use)
+export default connect(null, { setAlert })(Register);
