@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // whenever you import an action you want to use, have to pass it to connect
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-
-export const Register = ({ setAlert }) => {
+export const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,10 +23,9 @@ export const Register = ({ setAlert }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      //why are we using props to call setAlert, where is setAlert being passed in as a prop
       setAlert('Passwords do not match', 'danger');
     } else {
-      console.log('SUCCESS');
+      register({ name, email, password });
     }
   };
 
@@ -44,7 +43,7 @@ export const Register = ({ setAlert }) => {
             name='name'
             value={name}
             onChange={onChange}
-            required
+            // required
           />
         </div>
         <div className='form-group'>
@@ -54,7 +53,7 @@ export const Register = ({ setAlert }) => {
             name='email'
             value={email}
             onChange={onChange}
-            required
+            // required
           />
           <small className='form-text'>
             This site uses Gravatar so if you want a profile image, use a
@@ -66,10 +65,11 @@ export const Register = ({ setAlert }) => {
             type='password'
             placeholder='Password'
             name='password'
-            minLength='6'
+            // minLength='6'
             value={password}
             onChange={onChange}
-            required
+            // this is HTML 5 form validation, we want to use server side form validation
+            // required
           />
         </div>
         <div className='form-group'>
@@ -77,10 +77,10 @@ export const Register = ({ setAlert }) => {
             type='password'
             placeholder='Confirm Password'
             name='password2'
-            minLength='6'
+            // minLength='6'
             value={password2}
             onChange={onChange}
-            required
+            // required
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Register' />
@@ -94,8 +94,9 @@ export const Register = ({ setAlert }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
 //whenever we use connect, we must export it with the component like so:
 //connect takes in (state you want to map, object with any actions you want to use)
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
