@@ -9,10 +9,10 @@ import setAuthToken from './utils/setAuthToken';
 
 // Redux
 // will connect react and redux together
+
 import { Provider } from 'react-redux';
 import store from './store';
 import { loadUser } from './actions/auth';
-
 import './App.css';
 
 if (localStorage.token) {

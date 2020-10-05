@@ -1,0 +1,17 @@
+.developer-page-profile-card {
+  background-color: red;
+  width: 20%;
+  height: 500;
+  margin: 10px;
+  text-align: center;
+}
+
+.developer-page-card-container {
+  background-color: black;
+  width: 500px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1000px;
+}
