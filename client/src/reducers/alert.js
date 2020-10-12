@@ -2,7 +2,7 @@ import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
 
 //array of objects that have an id and message
 const initialState = [
-  // array of alert objects that represent alerts
+  // array of objects that represent alerts
   //   {
   //     id: 1,
   //     msg: 'Please log in',

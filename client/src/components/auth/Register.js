@@ -109,4 +109,4 @@ const mapStateToProps = (state) => ({
 
 //whenever we use connect, we must export it with the component like so:
 //connect takes in (state you want to map, object with any actions you want to use)
-export default connect(null, { setAlert, register })(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);
