@@ -13,6 +13,7 @@ const User = require('../../models/User');
 // @access  Public - dont need to send a token to access this route
 router.get('/', auth, async (req, res) => {
   try {
+    //leaves off the password in the data when we send it back
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
   } catch (err) {

@@ -7,6 +7,7 @@ const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 
 // route to get our profile ( creating profile is seperate route)
 // @route   GET api/profile/me
@@ -14,6 +15,9 @@ const User = require('../../models/User');
 // @access  Private
 router.get('/me', auth, async (req, res) => {
   try {
+    //also want to populate this with the name and the avatar of the user
+    //which are in the user model not the profile model, use populate for this
+    // populate('collect', [fields to bring in from that collection])
     const profile = await Profile.findOne({
       user: req.user.id,
     }).populate('user', ['name', 'avatar']);
@@ -146,6 +150,7 @@ router.get('/user/:user_id', async (req, res) => {
 router.delete('/', auth, async (req, res) => {
   try {
     // @todo - remove users posts
+    await Post.deleteMany({ user: req.user.id });
     // Remove profile, I think Remove returns nothing and delete returns the deleted object
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });

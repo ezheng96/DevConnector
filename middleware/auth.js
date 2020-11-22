@@ -16,8 +16,8 @@ module.exports = function (req, res, next) {
   try {
     const decoded = jwt.verify(token, config.get('jwtSecret'));
     // this is where req.user.id comes from because the payload was:
-    // user : { user: {id: user.id} }
-    //can use this in any of our routes after setting user key of request object to the decoded id
+    // user: {id: user.id}
+    // can use this in any of our routes after setting user key of request object to the decoded id
     req.user = decoded.user;
     next();
   } catch (err) {
