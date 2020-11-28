@@ -35,15 +35,16 @@ const EditProfile = ({
       location: loading || !profile.location ? '' : profile.location,
       status: loading || !profile.status ? '' : profile.status,
       skills: loading || !profile.skills ? '' : profile.skills.join(','),
-      githubusername: loading || !profile.githubusername ? '' : profile.githubusername,
+      githubusername:
+        loading || !profile.githubusername ? '' : profile.githubusername,
       bio: loading || !profile.bio ? '' : profile.bio,
       twitter: loading || !profile.social ? '' : profile.twitter,
       facebook: loading || !profile.social ? '' : profile.facebook,
       linkedin: loading || !profile.social ? '' : profile.linkedin,
       youtube: loading || !profile.social ? '' : profile.youtube,
       instagram: loading || !profile.social ? '' : profile.instagram,
-    })
-  }, [loading]);
+    });
+  }, [loading, getCurrentProfile, profile.company]);
 
   const {
     company,

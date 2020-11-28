@@ -17,7 +17,7 @@ router.get('/me', auth, async (req, res) => {
   try {
     //also want to populate this with the name and the avatar of the user
     //which are in the user model not the profile model, use populate for this
-    // populate('collect', [fields to bring in from that collection])
+    //populate('collection-name', [fields to bring in from that collection])
     const profile = await Profile.findOne({
       user: req.user.id,
     }).populate('user', ['name', 'avatar']);
