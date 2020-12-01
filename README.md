@@ -1,4 +1,3 @@
-# DevLink
 This app was developed using the MERN stack  
 
 ## Project Setup
