@@ -22,7 +22,7 @@ cd client
 npm install
 ```
 
-From the root, you can run both frontend and backend in development mode using:
+### From the root, you can run both frontend and backend in development mode using:
 ```
 npm run dev 
 ```
