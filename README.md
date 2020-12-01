@@ -12,7 +12,7 @@ This app was developed using the MERN stack
 }
 ```
 
-### After installing npm, navigate to the project directory and install server dependencies using:
+### After installing npm, navigate to the project directory and install server dependencies:
 ```
 npm install
 ```
@@ -22,7 +22,7 @@ cd client
 npm install
 ```
 
-### From the root, you can run both frontend and backend in development mode using:
+### From the root, you can run both frontend and backend in development mode:
 ```
 npm run dev 
 ```
